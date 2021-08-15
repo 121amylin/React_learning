@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03_Render_Element</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="app2"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- react -->
+    <script type="text/babel">
+      function getTimerHandle() {
+        const initDOM = document.querySelector("#app");
+        const timer = new Date().toLocaleString();
+        const Element = <h1>now Time {timer}</h1>;
+        ReactDOM.render(Element, initDOM);
+      }
+      window.setInterval(() => {
+        getTimerHandle();
+      }, 1000);
+    </script>
+
+    <!-- ES6 -->
+    <script>
+      function pureJSgetTimerHandle() {
+        const ES6init = document.querySelector("#app2");
+        const timer = new Date().toLocaleString();
+        const addElement = `
+      <h1>now Time ${timer}</h1>
+      `;
+        ES6init.innerHTML = addElement;
+      }
+      window.setInterval(()=>{
+        pureJSgetTimerHandle()
+      },1000)
+    </script>
+  </body>
+</html>

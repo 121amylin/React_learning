@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04_2_Components_and_Props_parting</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const init = document.querySelector("#app");
+      function formatDate(props) {
+        return props;
+      }
+      function Avatar(props) {
+        console.log(props)
+        return (
+          <img
+            className="Avatar"
+            src={props.user.avatarUrl}
+            alt={props.user.name}
+          />
+        );
+      }
+      function UserInfo(props) {
+        // console.log(props)
+        return (
+          <div className="UserInfo">
+            <Avatar user={props.eprps} />
+            <div className="UserInfo-name">{props.eprps.name}</div>
+          </div>
+        );
+      }
+      function CommentText(props) {
+        // console.log(props);
+        return <div className="Comment-text">{props.cprops}</div>;
+      }
+      function CommentDate(props) {
+        return <div className="Comment-date">{formatDate(props.dprops)}</div>;
+      }
+      function Comment(props) {
+        return (
+          <div className="Comment">
+            <UserInfo eprps={props.author} />
+            <CommentText cprops={props.text} />
+            <CommentDate dprops={props.date} />
+          </div>
+        );
+      }
+      ReactDOM.render(
+        Comment({
+          author: {
+            name: "icon",
+            avatarUrl:
+              "https://img1.exportersindia.com/product_images/bc-full/dir_146/4378603/white-rabbit-1482298866-2647241.jpeg",
+          },
+          text: "lorem",
+          date: "202108018",
+        }),
+        init
+      );
+    </script>
+  </body>
+</html>

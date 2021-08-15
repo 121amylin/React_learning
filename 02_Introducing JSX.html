@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02_Introducing JSX</title>
+    <style>
+      .main_color {
+        color: #da6900;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+      const userName='Amy'
+      const syleObject={
+        color:"#ccc",
+        fontSize:'60px',
+        background:'#eee'
+      }
+        const initAPP = document.querySelector("#app");
+
+        const Title =  (
+            <div>
+                {loginHandle()}
+            </div>
+          );
+
+          function loginHandle(){
+            const islogin=true
+            if(islogin){
+                // return  <h1 style={{color:"#ccc"}}>Hello!<span className="main_color">{userName}</span></h1>
+              return  <h1 style={syleObject}>Hello!<span className="main_color">{userName}</span></h1>
+            }else{
+              return <h1>請登入</h1>
+            }
+          }
+
+        ReactDOM.render(Title, initAPP);
+    </script>
+  </body>
+</html>

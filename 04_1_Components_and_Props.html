@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      const init = document.querySelector("#app");
+
+      function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>
+      }
+      class Welcome2 extends React.Component {
+        render() {
+          return <h1>Hello, {this.props.name}</h1>;
+        }
+      }
+
+
+      //【base】
+      const element=<Welcome name="Ann" />
+      // ReactDOM.render(Welcome(amy),init) //X
+      ReactDOM.render(Welcome({name:'amy'}),init)  //O
+        // ReactDOM.render(Welcome(amy),init) //X
+      // ReactDOM.render(<Welcome name="Amy" />,init)  //O
+
+      //【引用多個組件】
+      //變量不能直接放在千套裡面當組件使用 ，const element = <h1>123</h1>; 要用{element}，他其實不是組件  是實例
+      const elementGround=(
+        <React.Fragment>
+          <Welcome name="Ann" />
+          <Welcome name="Amy" />
+          <Welcome name="Ivan" />
+        </React.Fragment>
+      )
+
+
+
+      // ReactDOM.render(elementGround,init)
+    </script>
+  </body>
+</html>
